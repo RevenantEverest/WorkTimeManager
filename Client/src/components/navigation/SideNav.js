@@ -14,6 +14,9 @@ import {
 
 /* Page Imports */
 import Dashboard from '../pages/Dashboard';
+import Timesheet from '../pages/Timesheet';
+import Projects from '../pages/Projects';
+import History from '../pages/History';
 
 function SideNav() {
 
@@ -90,6 +93,9 @@ function SideNav() {
         </MDBNavbar>
         <main style={mainStyle}>
             <Route exact path="/" component={() => (<Dashboard />)} />
+            <Route exact path="/timesheet" component={() => (<Timesheet />)} />
+            <Route exact path="/projects" component={() => (<Projects />)} />
+            <Route exact path="/history" component={() => (<History />)} />
         </main>
         {/* <Footer /> */}
         </div>

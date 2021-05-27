@@ -7,13 +7,17 @@ function Breadcrumb(props) {
     let Routes = props.routes.map((el, idx) => {
         return(
             <MDBBreadcrumbItem key={idx} active={el.isActive}>
-            {el.isActive ? <Link to={el.path}>{el.name}</Link> : el.name}
+            <Link 
+            className={el.isActive ? "active-link" : ""} 
+            to={el.path}>
+                {el.name}
+            </Link>
             </MDBBreadcrumbItem>
         );
     });
 
     return(
-        <div className="Breadcrumb">
+        <div className="Breadcrumb mt-4">
         <MDBBreadcrumb>
             {Routes}
         </MDBBreadcrumb>

@@ -1,29 +1,29 @@
 import {
-    MDBContainer as Container,
+    MDBContainer as Container, 
     MDBRow as Row,
     MDBCol as Col
 } from 'mdbreact';
 
 import Breadcrumb from '../sections/Breadcrumb';
 
-function Dashboard() {
+function Timesheet() {
 
     const _Routes = [
         { name: "Home", path: "/" },
-        { name: "Dashboard", path: "/dashboard", isActive: true }
+        { name: "Timesheet", path: "/timesheet", isActive: true }
     ];
 
     return(
-        <div id="Dashboard">
+        <div id="Timesheet">
             <Container>
             <Row>
                 <Col>
                 <Breadcrumb routes={_Routes} />
                 </Col>
             </Row>
-            </Container>    
+            </Container>
         </div>
     );
 };
 
-export default Dashboard;
+export default Timesheet;

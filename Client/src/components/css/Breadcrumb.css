@@ -4,6 +4,11 @@
 }
 
 .Breadcrumb a {
+    color: inherit;
+    font-weight: 400;
+}
+
+.Breadcrumb .active-link {
     color: #0093C3;
     font-weight: 400;
 }

@@ -6,24 +6,24 @@ import {
 
 import Breadcrumb from '../sections/Breadcrumb';
 
-function Dashboard() {
+function History() {
 
     const _Routes = [
         { name: "Home", path: "/" },
-        { name: "Dashboard", path: "/dashboard", isActive: true }
+        { name: "History", path: "/history", isActive: true }
     ];
 
     return(
-        <div id="Dashboard">
+        <div id="History">
             <Container>
             <Row>
                 <Col>
                 <Breadcrumb routes={_Routes} />
                 </Col>
             </Row>
-            </Container>    
+            </Container>
         </div>
     );
 };
 
-export default Dashboard;
+export default History;
