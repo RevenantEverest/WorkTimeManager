@@ -54,16 +54,20 @@ function SideNav() {
         >
             <MDBSideNavNav>
             <MDBSideNavLink to="/" topLevel className="SideNav-El">
-                <FontAwesomeIcon className="FontAwesomeIcon" icon="tachometer-alt" />
+                <FontAwesomeIcon className="FontAwesomeIcon" icon={"tachometer-alt"} />
                 Dashboard
             </MDBSideNavLink>
-            <MDBSideNavLink to="/voice" topLevel className="SideNav-El">
-                <FontAwesomeIcon className="FontAwesomeIcon" icon="clock" />
+            <MDBSideNavLink to="/timesheet" topLevel className="SideNav-El">
+                <FontAwesomeIcon className="FontAwesomeIcon" icon="hourglass-start" />
                 Timesheet
             </MDBSideNavLink>
-            <MDBSideNavLink to="/items" topLevel className="SideNav-El">
-                <FontAwesomeIcon className="FontAwesomeIcon" icon="briefcase" />
-                Logs
+            <MDBSideNavLink to="/projects" topLevel className="SideNav-El">
+                <FontAwesomeIcon className="FontAwesomeIcon" icon="tasks" />
+                Projects
+            </MDBSideNavLink>
+            <MDBSideNavLink to="/history" topLevel className="SideNav-El">
+                <FontAwesomeIcon className="FontAwesomeIcon" icon="history" />
+                History
             </MDBSideNavLink>
             </MDBSideNavNav>
         </MDBSideNav>
