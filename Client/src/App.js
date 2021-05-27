@@ -1,17 +1,15 @@
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 
-/* Pages */
-import HomePage from './components/pages/HomePage';
+import SideNav from './components/navigation/SideNav';
 
 function App() {
     return(
         <div>
-        {/* <Router>
+        <Router>
             <div>
-            <Route exact path="/" component={HomePage} />
-            </div>
-        </Router> */}
-        <HomePage />
+            <SideNav />
+            </div> 
+        </Router>
         </div>
     );
 };
