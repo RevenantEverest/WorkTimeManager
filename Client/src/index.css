@@ -22,11 +22,9 @@ th, td {
     color: white;
 }
 
-.card { background: #0A0A0A !important; }
-.card-light { background:#2C2C2C !important; }
-.card-body { background: #0A0A0A !important; }
+.card, .card-body { background: #0A0A0A !important; }
+.card-light, .card-body-light, .modal-content, .modal-header { background:#2C2C2C !important; }
 .card-body-medium { background: #1F1F1F !important; color: #847F74 !important; }
-.card-body-light { background:#2C2C2C !important; }
 
 .d-inline { display: inline; }
 .d-inline-block { display: inline-block; }
@@ -45,6 +43,7 @@ th, td {
 .w-45 { width: 45% !important; }
 
 .wtm-color { background-color: #0093c3 !important; }
+.wtm-text { color: #0093c3 !important; }
 
 /* Default Input */
 .form-control {
