@@ -13,20 +13,12 @@ function StopWatch(props) {
     const isVisible = usePageVisibility();
 
     let interval = null;
-
-    const handleTimerInterval = () => {
-        if(isRunning && !blurStartDate)
-            interval = setInterval(() => setTime(time => time + 10), 10);
-        else 
-            clearInterval(interval);
-    };
-
     useEffect(() => {
         
         handleTimerInterval();
 
         return () => clearInterval(interval);
-    }, [isRunning, handleTimerInterval, interval, blurStartDate]);
+    }, [isRunning]);
 
     useEffect(() => {
         if(!isVisible && isRunning) {
@@ -40,9 +32,14 @@ function StopWatch(props) {
             handleTimerInterval();
             setBlurStartDate(null);
         }
-    }, [isRunning, isVisible, handleTimerInterval, interval, setBlurStartDate, blurStartDate, time,]);
+    }, [isRunning, isVisible]);
 
-    
+    const handleTimerInterval = () => {
+        if(isRunning && !blurStartDate)
+            interval = setInterval(() => setTime(time => time + 10), 10);
+        else 
+            clearInterval(interval);
+    };
 
     const handleStart = () => {
         let date = new Date();
