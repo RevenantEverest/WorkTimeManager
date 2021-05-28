@@ -16,6 +16,7 @@ import {
 
 import Breadcrumb from '../sections/Breadcrumb';
 import StopWatch from '../sections/Stopwatch';
+import TimesheetTable from '../sections/TimesheetTable';
 
 function Timesheet() {
 
@@ -31,28 +32,7 @@ function Timesheet() {
         setRows([...rows]);
     };
 
-    const renderRows = () => {
-        let Rows = rows.map((el, idx) => {
-            let ts = moment(el.timeStart, "YYYY-M-DD HH:mm:ss");
-            let te = moment(el.timeEnd, "YYYY-M-DD HH:mm:ss");
-            return(
-                <tr key={idx}>
-                <td className="f-400">{idx + 1}</td>
-                <td className="f-400">{el.title}</td>
-                <td className="f-400">{ts.format("M/DD/YYYY HH:mm:ss")}</td>
-                <td className="f-400">{te.format("M/DD/YYYY HH:mm:ss")}</td>
-                <td className="f-400">{((te.diff(ts, 'seconds') / 60) / 60).toFixed(2)}</td>
-                <td className="f-400">
-                    <MDBBtn color="blue darken-3" size="sm">
-                        <MDBIcon icon="edit" />
-                    </MDBBtn>
-                </td>
-                </tr>
-            );
-        });
-
-        return Rows;
-    };
+    
 
     const renderTotalTime = () => {
         let rowTimeDif = rows.map(el => {
@@ -100,21 +80,7 @@ function Timesheet() {
             </Row>
             <Row className="mt-4">
                 <Col>
-                <MDBTable>
-                <MDBTableHead>
-                    <tr>
-                    <th className="f-600">#</th>
-                    <th className="f-600">Title</th>
-                    <th className="f-600">Time Start</th>
-                    <th className="f-600">Time End</th>
-                    <th className="f-600">Total Time (hrs.)</th>
-                    <th className="f-600">Actions</th>
-                    </tr>
-                </MDBTableHead>
-                <MDBTableBody>
-                    {renderRows()}
-                </MDBTableBody>
-                </MDBTable>
+                <TimesheetTable rows={rows} />
                 </Col>
             </Row>
             {rows.length > 0 ? renderTotalTime() : ''}
