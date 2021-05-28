@@ -18,6 +18,11 @@ app.use(cors());
 app.set('trust proxy', true);
 app.set('trust proxy', 'loopback');
 
+/* Routes */
+app.use("/projects", require('./routes/projectRoutes'));
+app.use("/billing_periods", require('./routes/billingPeriodRoutes'));
+app.use("/billing_period_records", require('./routes/billingPeriodRecordRoutes'));
+
 /* Default Routes */
 app.use("/", (req, res) => res.json({ message: "WorkTimeManager-API" }));
 
