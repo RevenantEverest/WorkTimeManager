@@ -43,7 +43,7 @@ function Timesheet() {
                 <td className="f-400">{te.format("M/DD/YYYY HH:mm:ss")}</td>
                 <td className="f-400">{((te.diff(ts, 'seconds') / 60) / 60).toFixed(2)}</td>
                 <td className="f-400">
-                    <MDBBtn color="elegant" size="sm">
+                    <MDBBtn color="blue darken-3" size="sm">
                         <MDBIcon icon="edit" />
                     </MDBBtn>
                 </td>
