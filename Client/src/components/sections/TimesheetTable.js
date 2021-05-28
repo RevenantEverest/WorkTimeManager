@@ -15,8 +15,8 @@ import {
 function TimesheetTable(props) {
     const renderRows = () => {
         let Rows = props.rows.map((el, idx) => {
-            let ts = moment(el.timeStart, "YYYY-M-DD HH:mm:ss");
-            let te = moment(el.timeEnd, "YYYY-M-DD HH:mm:ss");
+            let ts = moment(el.time_start.toString(), "YYYY-M-DD HH:mm:ss");
+            let te = moment(el.time_end.toString(), "YYYY-M-DD HH:mm:ss");
             return(
                 <tr key={idx}>
                 <td className="f-400">{idx + 1}</td>
