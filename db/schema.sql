@@ -23,6 +23,6 @@ CREATE TABLE billing_period_records (
     billing_period_id BIGINT,
     title VARCHAR(255),
     description TEXT,
-    time_start TIMESTAMP,
-    time_end TIMESTAMP
+    time_start TIMESTAMPTZ,
+    time_end TIMESTAMPTZ
 );
