@@ -1,13 +1,10 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 
 import moment from 'moment';
 import {
     MDBContainer as Container, 
     MDBRow as Row,
     MDBCol as Col,
-    MDBTable,
-    MDBTableHead,
-    MDBTableBody,
     MDBCard,
     MDBCardBody,
     MDBBtn,
@@ -18,6 +15,8 @@ import Breadcrumb from '../sections/Breadcrumb';
 import StopWatch from '../sections/Stopwatch';
 import TimesheetTable from '../sections/TimesheetTable';
 
+import billingPeriodRecordServices from '../../services/billingPeriodRecordServices'
+
 function Timesheet() {
 
     const _Routes = [
@@ -25,25 +24,35 @@ function Timesheet() {
         { name: "Timesheet", path: "/timesheet", isActive: true }
     ];
 
-    const [rows, setRows] = useState([]);
+    const [records, setRecords] = useState([]);
 
-    const getStartStopValues = (start, stop) => {
-        rows.push({ title: "", timeStart: start, timeEnd: stop });
-        setRows([...rows]);
+    useEffect(() => {
+        console.log(new Date())
+        getBillingPeriodRecords();
+    }, []);
+
+    const getBillingPeriodRecords = () => {
+        billingPeriodRecordServices.getByBillingPeriodId(1)
+        .then(records => setRecords(records.data.data ? records.data.data : []))
+        .catch(err => console.error(err));
     };
 
-    
+    const saveBillingRecord = (start, stop) => {
+        billingPeriodRecordServices.save({ billing_period_id: 1, time_start: moment(start), time_end: moment(stop) })
+        .then(() => getBillingPeriodRecords())
+        .catch(err => console.error(err));
+    };
 
     const renderTotalTime = () => {
-        let rowTimeDif = rows.map(el => {
-            let ts = moment(el.timeStart, "YYYY-M-DD HH:mm:ss");
-            let te = moment(el.timeEnd, "YYYY-M-DD HH:mm:ss");
+        let recordTimeDif = records.map(el => {
+            let ts = moment.utc(el.time_start.toString(), "YYYY-M-DD HH:mm:ss");
+            let te = moment.utc(el.time_end.toString(), "YYYY-M-DD HH:mm:ss");
 
             return (te.diff(ts, 'seconds') / 60) / 60;
         });
 
         let totalTimeInHours = 0;
-        rowTimeDif.forEach(el => totalTimeInHours = totalTimeInHours + el);
+        recordTimeDif.forEach(el => totalTimeInHours = totalTimeInHours + el);
 
         return(
             <Row>
@@ -75,15 +84,35 @@ function Timesheet() {
             </Row>
             <Row className="mt-4">
                 <Col className="d-flex justify-content-center">
-                <StopWatch getStartStopValues={getStartStopValues} />
+                <MDBCard className="w-100">
+                <MDBCardBody className="card-body-light white-text">
+                    <Row>
+                    <Col lg="10">
+                        <h6 className="d-inline">Billing Period for </h6>
+                        <h6 className="d-inline wtm-text">The Foundation for Critical Thinking</h6>
+                    </Col>
+                    <Col className="d-flex justify-content-end">
+                        <div>
+                        <MDBIcon icon="clock" />
+                        <p className="d-inline ml-2">{moment().format("M/DD/YYYY")}</p>
+                        </div>
+                    </Col>
+                    </Row>
+                </MDBCardBody>
+                </MDBCard>
+                </Col>
+            </Row>
+            <Row className="mt-4">
+                <Col className="d-flex justify-content-center">
+                <StopWatch getStartStopValues={saveBillingRecord} />
                 </Col>
             </Row>
             <Row className="mt-4">
                 <Col>
-                <TimesheetTable rows={rows} />
+                <TimesheetTable rows={records} />
                 </Col>
             </Row>
-            {rows.length > 0 ? renderTotalTime() : ''}
+            {records.length > 0 ? renderTotalTime() : ''}
             </Container>
         </div>
     );
