@@ -40,7 +40,7 @@ module.exports = {
         .catch(err => next(err));
     },
     delete(req, res, next) {
-        db.delete()
+        db.delete(req.params.id)
         .then(() => res.sendStatus(200).json({ message: "Project Deleted" }))
         .catch(err => next(err));
     }
