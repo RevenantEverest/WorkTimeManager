@@ -5,28 +5,28 @@ const services = {};
 services.index = () => {
     return axios({
         method: "GET",
-        url: `${env.API}/billing_period_record_records`
+        url: `${env.API}/billing_period_records`
     });
 };
 
 services.getOne = (id) => {
     return axios({
         method: "GET",
-        url: `${env.API}/billing_period_record_records/id/${id}`
+        url: `${env.API}/billing_period_records/id/${id}`
     });
 };
 
-services.getByUserId = (billing_period_id) => {
+services.getByBillingPeriodId = (billing_period_id) => {
     return axios({
         method: "GET",
-        url: `${env.API}/billing_period_record_records/billing_period/id/${billing_period_id}`
+        url: `${env.API}/billing_period_records/billing_period/id/${billing_period_id}`
     });
 };
 
 services.save = (billing_period_record) => {
     return axios({
         method: "POST",
-        url: `${env.API}/billing_period_record_records`,
+        url: `${env.API}/billing_period_records`,
         data: {
             billing_period_id: billing_period_record.billing_period_id,
             time_start: billing_period_record.time_start,
@@ -38,7 +38,7 @@ services.save = (billing_period_record) => {
 services.update = (billing_period_record) => {
     return axios({
         method: "PUT",
-        url: `${env.API}/billing_period_record_records`,
+        url: `${env.API}/billing_period_records`,
         data: {
             id: billing_period_record.id,
             billing_period_id: billing_period_record.billing_period_id,
@@ -53,7 +53,7 @@ services.update = (billing_period_record) => {
 services.delete = (id) => {
     return axios({
         method: "DELETE",
-        url: `${env.API}/billing_period_record_records/id/${id}`
+        url: `${env.API}/billing_period_records/id/${id}`
     });
 };
 
