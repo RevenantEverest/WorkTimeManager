@@ -13,6 +13,34 @@ code {
      monospace;
 }
 
+.f-400 { font-weight: 400; }
+.f-500 { font-weight: 500; }
+.f-600 { font-weight: 600; }
+.f-700 { font-weight: 700; }
+.f-800 { font-weight: 800; }
+
+.d-inline { display: inline; }
+.d-inline-block { display: inline-block; }
+
+.w-45 { width: 45% !important; }
+
 .FontAwesomeIcon {
     margin-right: 2%;
+}
+
+.card-header {
+    background: #2C2C2C !important;
+    color: white;
+}
+
+.card-body {
+    background: #0A0A0A !important;
+}
+
+.card-body-light {
+    background:#2C2C2C !important;
+}
+
+th, td {
+    color: white;
 }
