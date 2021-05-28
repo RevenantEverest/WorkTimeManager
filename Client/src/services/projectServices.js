@@ -30,7 +30,8 @@ services.save = (project) => {
         data: {
             user_id: project.user_id,
             name: project.name,
-            description: project.description
+            description: project.description,
+            created_at: project.created_at
         }
     });
 };
