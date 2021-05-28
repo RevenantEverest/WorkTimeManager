@@ -13,34 +13,71 @@ code {
      monospace;
 }
 
+th, td {
+    color: white;
+}
+
+.card-header-overwrite {
+    background: #2C2C2C !important;
+    color: white;
+}
+
+.card { background: #0A0A0A !important; }
+.card-light { background:#2C2C2C !important; }
+.card-body { background: #0A0A0A !important; }
+.card-body-medium { background: #1F1F1F !important; color: #847F74 !important; }
+.card-body-light { background:#2C2C2C !important; }
+
+.d-inline { display: inline; }
+.d-inline-block { display: inline-block; }
+
 .f-400 { font-weight: 400; }
 .f-500 { font-weight: 500; }
 .f-600 { font-weight: 600; }
 .f-700 { font-weight: 700; }
 .f-800 { font-weight: 800; }
 
-.d-inline { display: inline; }
-.d-inline-block { display: inline-block; }
-
-.w-45 { width: 45% !important; }
-
 .FontAwesomeIcon {
     margin-right: 2%;
 }
 
-.card-header {
+.w-30 { width: 30% !important; }
+.w-45 { width: 45% !important; }
+
+.wtm-color { background-color: #0093c3 !important; }
+
+/* Default Input */
+.form-control {
     background: #2C2C2C !important;
-    color: white;
+    color: white !important;
+    border: 1px solid #575757;
 }
 
-.card-body {
-    background: #0A0A0A !important;
+.input-group-text {
+    background: #2c2c2c !important;
+    color: white !important;
+    border: 1px solid #575757;
 }
 
-.card-body-light {
-    background:#2C2C2C !important;
+/* Dark Input */
+.form-control {
+    background: #1f1f1f !important;
+    color: white !important;
+    border: 1px solid #575757;
 }
 
-th, td {
-    color: white;
+.input-group-text {
+    background: #292929 !important;
+    color: white !important;
+    border: 1px solid #575757;
+}
+
+/* Handles Input Focus */
+.black-skin input[type="email"]:focus:not([readonly]), 
+.black-skin input[type="text"]:focus:not([readonly]), 
+.black-skin input[type="password"]:focus:not([readonly]), 
+.black-skin input[type="number"]:focus:not([readonly]), 
+.black-skin textarea.md-textarea:focus:not([readonly]) {
+    border-color: #0093c3 !important;
+    box-shadow: 0 1px 0 0 #0093c3 !important;
 }
