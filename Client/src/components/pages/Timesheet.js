@@ -7,7 +7,6 @@ import {
     MDBCol as Col,
     MDBCard,
     MDBCardBody,
-    MDBBtn,
     MDBIcon
 } from 'mdbreact';
 

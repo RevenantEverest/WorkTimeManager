@@ -1,13 +1,8 @@
 import moment from 'moment';
 import {
-    MDBContainer as Container, 
-    MDBRow as Row,
-    MDBCol as Col,
     MDBTable,
     MDBTableHead,
     MDBTableBody,
-    MDBCard,
-    MDBCardBody,
     MDBBtn,
     MDBIcon
 } from 'mdbreact';

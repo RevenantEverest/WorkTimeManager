@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import '../css/SideNav.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { Route, Link } from 'react-router-dom';
+import { Route } from 'react-router-dom';
 import { 
     MDBIcon, 
     MDBSideNavNav, 
