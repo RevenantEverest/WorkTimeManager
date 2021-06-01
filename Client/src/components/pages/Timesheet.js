@@ -26,7 +26,6 @@ function Timesheet() {
     const [records, setRecords] = useState([]);
 
     useEffect(() => {
-        console.log(new Date())
         getBillingPeriodRecords();
     }, []);
 
@@ -36,16 +35,17 @@ function Timesheet() {
         .catch(err => console.error(err));
     };
 
+    /* Save Billing Period Record */
     const saveBillingRecord = (start, stop) => {
-        billingPeriodRecordServices.save({ billing_period_id: 1, time_start: moment(start), time_end: moment(stop) })
+        billingPeriodRecordServices.save({ billing_period_id: 1, time_start: moment(start).utc(), time_end: moment(stop).utc() })
         .then(() => getBillingPeriodRecords())
         .catch(err => console.error(err));
     };
 
     const renderTotalTime = () => {
         let recordTimeDif = records.map(el => {
-            let ts = moment.utc(el.time_start.toString(), "YYYY-M-DD HH:mm:ss");
-            let te = moment.utc(el.time_end.toString(), "YYYY-M-DD HH:mm:ss");
+            let ts = moment(el.time_start.toString(), "YYYY-M-DD HH:mm:ss");
+            let te = moment(el.time_end.toString(), "YYYY-M-DD HH:mm:ss");
 
             return (te.diff(ts, 'seconds') / 60) / 60;
         });

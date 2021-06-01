@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Redirect } from 'react-router-dom';
+import moment from 'moment';
 
 import {
     MDBContainer as Container,
@@ -36,7 +37,7 @@ function CreateProject() {
             user_id: 1,
             name: name,
             description: description,
-            created_at: new Date()
+            created_at: moment(new Date()).utc()
         };
 
         projectServices.save(data)
