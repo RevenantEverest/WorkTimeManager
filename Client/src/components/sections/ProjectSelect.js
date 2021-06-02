@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import '../css/ProjectSelect.css';
 
-import { useDispatch } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import { setCurrentProject } from '../../redux/actions';
 import {
     MDBDropdown,
@@ -15,6 +15,7 @@ import projectServices from '../../services/projectServices';
 function ProjectSelect() {
 
     const _isMounted = useRef(true);
+    const currentProject = useSelector(state => state.currentProject);
     const currentProjectDispatch = useDispatch();
     const [projects, setProjects] = useState([]);
     const [chosenProject, setChosenProject] = useState(null);
@@ -50,7 +51,7 @@ function ProjectSelect() {
         return(
             <MDBDropdown onChange={handleChange}>
             <MDBDropdownToggle caret color="elegant" size="sm">
-                {chosenProject ? handleProjectName() : 'Select Project' }
+                {chosenProject ? handleProjectName(chosenProject) : checkForCurrentProject() }
             </MDBDropdownToggle>
             <MDBDropdownMenu>
                 {Projects}
@@ -59,8 +60,12 @@ function ProjectSelect() {
         );
     };
 
-    const handleProjectName = () => {
-        let project = chosenProject;
+    const checkForCurrentProject = () => {
+        if(currentProject) return handleProjectName(currentProject);
+        else return 'Select Project';
+    };
+
+    const handleProjectName = (project) => {
         let projectName = project.name;
         if(project.name.split("").length > 15) {
             projectName = "";
