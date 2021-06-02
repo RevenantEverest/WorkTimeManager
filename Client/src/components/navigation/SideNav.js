@@ -17,7 +17,7 @@ import Dashboard from '../pages/Dashboard';
 import Timesheet from '../pages/Timesheet';
 import Projects from '../pages/Projects';
 import History from '../pages/History';
-import CreateProject from '../forms/CreateProject';
+import CreateProject from '../pages/CreateProject';
 import ProjectSelect from '../sections/ProjectSelect';
 
 function SideNav() {
