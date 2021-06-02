@@ -41,7 +41,7 @@ module.exports = {
     },
     delete(req, res, next) {
         db.delete(req.params.id)
-        .then(() => res.sendStatus(200).json({ message: "Billing Period Deleted" }))
+        .then(() => res.status(200).json({ message: "Billing Period Deleted" }))
         .catch(err => next(err));
     }
 };
