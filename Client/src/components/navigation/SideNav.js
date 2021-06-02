@@ -40,7 +40,6 @@ function SideNav() {
     const handleToggleClickA = () => setToggleStateA(!toggleStateA);
 
     const renderServerPicker = () => {
-        console.log(windowWidth);
         return(
             <MDBNavItem>
                 <ProjectSelect />
