@@ -25,10 +25,11 @@ function DeleteProjectModal(props) {
         <MDBModalBody className="text-white">
             <Container>
             <Row className="mb-5">
-                <Col>
-                <h4 className="d-inline">Are you sure you want to delete project: </h4>
+                <Col className="text-center">
+                <div>
+                <h4>Are you sure you want to delete project: </h4>
                 <h4 className="d-inline wtm-text f-500">{props.projectData.name}</h4>
-                <h4 className="d-inline">?</h4>
+                </div>
                 </Col>
             </Row>
             <Row>
