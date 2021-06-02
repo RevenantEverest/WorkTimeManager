@@ -26,7 +26,7 @@ function DeleteProjectModal(props) {
             <Container>
             <Row className="mb-5">
                 <Col>
-                <h4 className="d-inline">Are you sure you want to delet project: </h4>
+                <h4 className="d-inline">Are you sure you want to delete project: </h4>
                 <h4 className="d-inline wtm-text f-500">{props.projectData.name}</h4>
                 <h4 className="d-inline">?</h4>
                 </Col>
