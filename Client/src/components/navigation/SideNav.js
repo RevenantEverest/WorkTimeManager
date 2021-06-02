@@ -15,7 +15,8 @@ import {
 /* Page Imports */
 import Dashboard from '../pages/Dashboard';
 import Timesheet from '../pages/Timesheet';
-import Projects from '../pages/Projects';
+import Projects from '../pages/ProjectsList';
+import SingleProject from '../pages/SingleProject';
 import History from '../pages/History';
 import CreateProject from '../pages/CreateProject';
 import ProjectSelect from '../sections/ProjectSelect';
@@ -106,6 +107,7 @@ function SideNav() {
             <Route exact path="/" component={() => (<Dashboard />)} />
             <Route exact path="/timesheet" component={() => (<Timesheet />)} />
             <Route exact path="/projects" component={() => (<Projects />)} />
+            <Route path="/projects/:project" component={SingleProject} />
             <Route exact path="/history" component={() => (<History />)} />
 
             <Route exact path="/projects/create" component={() => (<CreateProject />)} />

@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import moment from 'moment';
+import { Link } from 'react-router-dom';
 import {
     MDBCard,
     MDBCardImage,
@@ -34,9 +35,14 @@ function Project(props) {
                     <MDBIcon far icon='clock' /> {moment(props.projectData.created_at).format("M/DD/YYYY")}
                 </li>
                 <li className='list-inline-item pr-2'>
+                    <Link to={{
+                        pathname: `/projects/${props.projectData.id}`,
+                        state: { projectData: props.projectData }
+                    }}>
                     <MDBBtn size="sm" color="blue darken-3" className="w-100">
-                        <MDBIcon icon="edit" />
+                        View
                     </MDBBtn>
+                    </Link>
                 </li>
                 <li className='list-inline-item pr-2'>
                     <MDBBtn size="sm" color="elegant" className="w-100" onClick={() => toggle()}>
