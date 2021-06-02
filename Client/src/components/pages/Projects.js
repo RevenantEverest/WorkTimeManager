@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import {
     MDBContainer as Container,
@@ -14,6 +14,7 @@ import projectServices from '../../services/projectServices';
 
 function Projects() {
 
+    const _isMounted = useRef(true);
     const _Routes = [
         { name: "Home", path: "/" },
         { name: "Projects", path: "/projects", isActive: true }
@@ -21,13 +22,17 @@ function Projects() {
     const [loading, setLoading] = useState(true);
     const [projects, setProjects] = useState([]);
 
-    useEffect(() => getProjects(), []);
+    useEffect(() => {
+        getProjects();
+        return () => _isMounted.current = false;
+    }, []);
 
     useEffect(() => {
         setLoading(false);
     }, [setProjects]);
 
     const getProjects = () => {
+        if(!_isMounted.current) return;
         projectServices.getByUserId(1)
         .then(projects => setProjects(projects.data.data))
         .catch(err => console.error(err));

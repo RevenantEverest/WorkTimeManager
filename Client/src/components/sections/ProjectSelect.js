@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import '../css/ProjectSelect.css';
 import {
     MDBDropdown,
@@ -11,14 +11,17 @@ import projectServices from '../../services/projectServices';
 
 function ProjectSelect() {
 
+    const _isMounted = useRef(true);
     const [projects, setProjects] = useState([]);
     const [chosenProject, setChosenProject] = useState(null);
 
     useEffect(() => {
         getProjects();
+        return () => _isMounted.current = false;
     }, []);
 
     const getProjects = () => {
+        if(!_isMounted.current) return;
         projectServices.getByUserId(1)
         .then(results => setProjects(results.data.data))
         .catch(err => console.error(err));
