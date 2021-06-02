@@ -1,0 +1,18 @@
+.ProjectSelect .dropdown-span {
+    color: #cccccc;
+    font-weight: 600;
+}
+
+.ProjectSelect .dropdown-toggle {
+    width: 200px
+}
+
+
+.ProjectSelect .dropdown-menu {
+    background: #3B3B3B;
+    border-color: #3B3B3B;
+}
+
+.dropdown-item:hover {
+    background: #1a1a1a !important;
+}
