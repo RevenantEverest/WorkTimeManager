@@ -3,6 +3,9 @@ import '../css/SideNav.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { Route } from 'react-router-dom';
 import { 
+    MDBContainer as Container,
+    MDBRow as Row,
+    MDBCol as Col,
     MDBIcon, 
     MDBSideNavNav, 
     MDBSideNav, 
@@ -18,6 +21,7 @@ import Timesheet from '../pages/Timesheet';
 import Projects from '../pages/Projects';
 import History from '../pages/History';
 import CreateProject from '../forms/CreateProject';
+import ProjectSelect from '../sections/ProjectSelect';
 
 function SideNav() {
 
@@ -32,6 +36,14 @@ function SideNav() {
     
     const handleResize = () => setWindowWidth(window.innerWidth)
     const handleToggleClickA = () => setToggleStateA(!toggleStateA);
+
+    const renderServerPicker = () => {
+        return(
+            <MDBNavItem>
+                <ProjectSelect />
+            </MDBNavItem>
+        );
+    };
 
     const navStyle = {
         paddingLeft: windowWidth > breakWidth ? "210px" : "16px"
@@ -90,7 +102,17 @@ function SideNav() {
                 <MDBIcon icon="bars" color="white" size="2x" />
                 </div>
             </MDBNavItem>
+            {windowWidth > 800 ? renderServerPicker() : ''}
             </MDBNavbarNav>
+            <MDBNavbarNav right style={{ marginLeft: 0 }}>
+                <Container>
+                <Row>
+                    <Col className="d-flex justify-content-start">
+                    {windowWidth > 800 ? '' : renderServerPicker()}
+                    </Col>
+                </Row>
+                </Container>
+                </MDBNavbarNav>
         </MDBNavbar>
         <main style={mainStyle}>
             <Route exact path="/" component={() => (<Dashboard />)} />
