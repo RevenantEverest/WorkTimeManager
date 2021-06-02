@@ -29,9 +29,8 @@ function ProjectSelect() {
     }, [chosenProject]);
 
     const getProjects = () => {
-        if(!_isMounted.current) return;
         projectServices.getByUserId(1)
-        .then(results => setProjects(results.data.data))
+        .then(results => _isMounted.current ? setProjects(results.data.data) : '')
         .catch(err => console.error(err));
     };
 
