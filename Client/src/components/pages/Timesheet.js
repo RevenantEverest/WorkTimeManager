@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 
 import moment from 'moment';
 import {
@@ -18,6 +18,7 @@ import billingPeriodRecordServices from '../../services/billingPeriodRecordServi
 
 function Timesheet() {
 
+    const _isMounted = useRef(true);
     const _Routes = [
         { name: "Home", path: "/" },
         { name: "Timesheet", path: "/timesheet", isActive: true }
@@ -27,9 +28,11 @@ function Timesheet() {
 
     useEffect(() => {
         getBillingPeriodRecords();
+        return () => _isMounted.current = false;
     }, []);
 
     const getBillingPeriodRecords = () => {
+        if(!_isMounted.current) return; 
         billingPeriodRecordServices.getByBillingPeriodId(1)
         .then(records => setRecords(records.data.data ? records.data.data : []))
         .catch(err => console.error(err));
@@ -108,7 +111,7 @@ function Timesheet() {
             </Row>
             <Row className="mt-4">
                 <Col>
-                <TimesheetTable rows={records} />
+                <TimesheetTable getBillingPeriodRecords={getBillingPeriodRecords} rows={records} />
                 </Col>
             </Row>
             {records.length > 0 ? renderTotalTime() : ''}
