@@ -1,5 +1,8 @@
 import React, { useState, useEffect, useRef } from 'react';
 import '../css/ProjectSelect.css';
+
+import { useDispatch } from 'react-redux';
+import { setCurrentProject } from '../../redux/actions';
 import {
     MDBDropdown,
     MDBDropdownToggle,
@@ -12,6 +15,7 @@ import projectServices from '../../services/projectServices';
 function ProjectSelect() {
 
     const _isMounted = useRef(true);
+    const currentProjectDispatch = useDispatch();
     const [projects, setProjects] = useState([]);
     const [chosenProject, setChosenProject] = useState(null);
 
@@ -19,6 +23,10 @@ function ProjectSelect() {
         getProjects();
         return () => _isMounted.current = false;
     }, []);
+
+    useEffect(() => {
+        currentProjectDispatch(setCurrentProject(chosenProject));
+    }, [chosenProject]);
 
     const getProjects = () => {
         if(!_isMounted.current) return;
