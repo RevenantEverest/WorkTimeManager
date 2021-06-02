@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import moment from 'moment';
 import {
     MDBCard,
@@ -21,9 +22,14 @@ function BillingPeriod(props) {
             <div className='rounded-bottom text-center pt-3 ml-0 mr-0'>
                 <ul className='list-unstyled list-inline font-small'>
                 <li className='list-inline-item pr-2 white-text'>
-                    <MDBBtn color="blue darken-3" size="sm">
-                    View
-                    </MDBBtn>
+                    <Link to={{
+                        pathname: `/projects/${billingPeriod.project_id}/billing_periods/${billingPeriod.id}`,
+                        state: { projectData: billingPeriod }
+                    }}>
+                        <MDBBtn color="blue darken-3" size="sm">
+                        View
+                        </MDBBtn>
+                    </Link>
                     <MDBBtn color="elegant" size="sm">
                         <MDBIcon icon='trash' />
                     </MDBBtn>

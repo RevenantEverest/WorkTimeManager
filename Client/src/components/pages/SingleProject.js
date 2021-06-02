@@ -7,12 +7,11 @@ import {
     MDBCard,
     MDBCardImage,
     MDBCardBody,
-    MDBIcon,
-    MDBBtn
+    MDBIcon
 } from 'mdbreact';
 
 import Breadcrumb from '../sections/Breadcrumb';
-import SingleProjectBillingPeriods from '../sections/SingleProjectBillingPeriods';
+import ProjectBillingPeriods from '../sections/ProjectBillingPeriods';
 
 import projectServices from '../../services/projectServices';
 
@@ -76,7 +75,7 @@ function SingleProject(props) {
                 </Col>
             </Row>
             {project ? renderProjectInfo() : ''}
-            {project ? <SingleProjectBillingPeriods project={project} /> : ''}
+            {project ? <ProjectBillingPeriods project={project} /> : ''}
             </Container>
         </div>
     );

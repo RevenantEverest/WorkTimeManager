@@ -86,7 +86,7 @@ function Timesheet() {
             <div>
             <Row className="mt-4">
                 <Col className="d-flex justify-content-center">
-                <TimesheetBillingPeriodCard billingPeriod={currentBillingPeriod} getLatestBillingPeriod={getLatestBillingPeriod} />
+                <TimesheetBillingPeriodCard canClose billingPeriod={currentBillingPeriod} getLatestBillingPeriod={getLatestBillingPeriod} />
                 </Col>
             </Row>
             <Row className="mt-4">

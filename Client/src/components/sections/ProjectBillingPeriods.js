@@ -9,7 +9,7 @@ import BillingPeriod from './BillingPeriod';
 
 import billingPeriodServices from '../../services/billingPeriodServices';
 
-function SingleProjectBillingPeriods(props) {
+function ProjectBillingPeriods(props) {
 
     const _isMounted = useRef(true);
     const project = props.project;
@@ -47,4 +47,4 @@ function SingleProjectBillingPeriods(props) {
     return billingPeriods ? renderBillingPeriods() : null;
 };
 
-export default SingleProjectBillingPeriods;
+export default ProjectBillingPeriods;
