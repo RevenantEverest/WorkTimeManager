@@ -15,6 +15,7 @@ import StopWatch from '../sections/Stopwatch';
 import TimesheetTable from '../sections/TimesheetTable';
 
 import billingPeriodRecordServices from '../../services/billingPeriodRecordServices'
+import TimesheetTotalTime from '../sections/TimesheetTotalTime';
 
 function Timesheet() {
 
@@ -43,37 +44,6 @@ function Timesheet() {
         billingPeriodRecordServices.save({ billing_period_id: 1, time_start: moment(start).utc(), time_end: moment(stop).utc() })
         .then(() => getBillingPeriodRecords())
         .catch(err => console.error(err));
-    };
-
-    const renderTotalTime = () => {
-        let recordTimeDif = records.map(el => {
-            let ts = moment(el.time_start.toString(), "YYYY-M-DD HH:mm:ss");
-            let te = moment(el.time_end.toString(), "YYYY-M-DD HH:mm:ss");
-
-            return (te.diff(ts, 'seconds') / 60) / 60;
-        });
-
-        let totalTimeInHours = 0;
-        recordTimeDif.forEach(el => totalTimeInHours = totalTimeInHours + el);
-
-        return(
-            <Row>
-            <Col>
-                <MDBCard>
-                <MDBCardBody className="card-body-light text-white">
-                <div style={{ float: "left" }}>
-                <p className="d-inline f-700">Total: </p>
-                <p className="d-inline">{totalTimeInHours.toFixed(2)}</p>
-                </div>
-                <div style={{ float: "right" }}>
-                <p className="d-inline f-700">Current Amount Due: </p>
-                <p className="d-inline">{totalTimeInHours.toFixed(2) * 20}</p>
-                </div>
-                </MDBCardBody>
-                </MDBCard>
-            </Col>
-            </Row>
-        );
     };
 
     return(
@@ -114,7 +84,7 @@ function Timesheet() {
                 <TimesheetTable getBillingPeriodRecords={getBillingPeriodRecords} rows={records} />
                 </Col>
             </Row>
-            {records.length > 0 ? renderTotalTime() : ''}
+            {records.length > 0 ? <TimesheetTotalTime records={records} /> : ''}
             </Container>
         </div>
     );
