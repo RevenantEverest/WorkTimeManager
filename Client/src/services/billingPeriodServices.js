@@ -16,7 +16,7 @@ services.getOne = (id) => {
     });
 };
 
-services.getByUserId = (project_id) => {
+services.getByProjectId = (project_id) => {
     return axios({
         method: "GET",
         url: `${env.API}/billing_periods/project/id/${project_id}`
