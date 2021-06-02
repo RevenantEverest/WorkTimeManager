@@ -2,17 +2,14 @@ import React, { useEffect, useState } from 'react';
 import '../css/SideNav.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { Route } from 'react-router-dom';
-import { 
-    MDBContainer as Container,
-    MDBRow as Row,
-    MDBCol as Col,
+import {
     MDBIcon, 
     MDBSideNavNav, 
     MDBSideNav, 
     MDBSideNavLink,
     MDBNavbar,
     MDBNavbarNav,
-    MDBNavItem
+    MDBNavItem,
 } from 'mdbreact';
 
 /* Page Imports */
@@ -30,14 +27,20 @@ function SideNav() {
     const breakWidth = 1300;
 
     useEffect(() => {
+        function handleResize() {
+          setWindowWidth(window.innerWidth);
+        }
+
         window.addEventListener("resize", handleResize);
-        return window.removeEventListener("resize", handleResize);
-    });
+        handleResize();
     
-    const handleResize = () => setWindowWidth(window.innerWidth)
+        return () => window.removeEventListener("resize", handleResize);
+      }, []);
+    
     const handleToggleClickA = () => setToggleStateA(!toggleStateA);
 
     const renderServerPicker = () => {
+        console.log(windowWidth);
         return(
             <MDBNavItem>
                 <ProjectSelect />
@@ -45,18 +48,10 @@ function SideNav() {
         );
     };
 
-    const navStyle = {
-        paddingLeft: windowWidth > breakWidth ? "210px" : "16px"
-    };
-
-    const mainStyle = {
-        margin: "0 0 0 240px",
-        paddingTop: "5.5rem",
-        paddingLeft: windowWidth > breakWidth ? "240px" : "0"
-    };
+    const navStyle = { paddingLeft: windowWidth > breakWidth ? "210px" : "16px" };
+    const mainStyle = { paddingLeft: windowWidth > breakWidth ? "240px" : "0" };
 
     return(
-        
         <div className="fixed-sn black-skin">
         <MDBSideNav
         className="SideNav"
@@ -104,15 +99,9 @@ function SideNav() {
             </MDBNavItem>
             {windowWidth > 800 ? renderServerPicker() : ''}
             </MDBNavbarNav>
-            <MDBNavbarNav right style={{ marginLeft: 0 }}>
-                <Container>
-                <Row>
-                    <Col className="d-flex justify-content-start">
-                    {windowWidth > 800 ? '' : renderServerPicker()}
-                    </Col>
-                </Row>
-                </Container>
-                </MDBNavbarNav>
+            <MDBNavbarNav right>
+            {windowWidth > 800 ? '' : renderServerPicker()}
+            </MDBNavbarNav>
         </MDBNavbar>
         <main style={mainStyle}>
             <Route exact path="/" component={() => (<Dashboard />)} />
