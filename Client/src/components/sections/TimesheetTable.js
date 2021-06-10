@@ -31,6 +31,7 @@ function TimesheetTable(props) {
             <th className="f-600">Title</th>
             <th className="f-600">Time Start</th>
             <th className="f-600">Time End</th>
+            <th className="f-600">ID</th>
             <th className="f-600">Total Time (hrs.)</th>
             <th className="f-600">Actions</th>
             </tr>
