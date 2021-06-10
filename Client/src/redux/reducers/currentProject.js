@@ -6,7 +6,7 @@ import {
 
 const initialState = null;
 
-export default (state = initialState, action) => {
+const handler = (state = initialState, action) => {
     switch(action.type) {
         case SET_CURRENT_PROJECT:
             state = action.payload;
@@ -21,3 +21,5 @@ export default (state = initialState, action) => {
             return state;
     }
 };
+
+export default handler;

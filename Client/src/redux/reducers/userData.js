@@ -8,7 +8,7 @@ const initialState = {
     id: 1
 };
 
-export default (state = initialState, action) => {
+const handler = (state = initialState, action) => {
     switch(action.type) {
         case SET_USERDATA:
             state = action.payload;
@@ -23,3 +23,5 @@ export default (state = initialState, action) => {
             return state;
     }
 };
+
+export default handler;
