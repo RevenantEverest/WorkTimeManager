@@ -8,7 +8,7 @@ module.exports = {
         return db.one('SELECT * FROM billing_period_records WHERE id = $1', id);
     },
     findByBillingPeriodId(id) {
-        return db.many('SELECT * FROM billing_period_records WHERE billing_period_id = $1', id);
+        return db.many('SELECT * FROM billing_period_records WHERE billing_period_id = $1 ORDER BY id ASC', id);
     },
     save(record) {
         return db.one(`INSERT INTO billing_period_records (billing_period_id, time_start, time_end)
