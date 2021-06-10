@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import { Redirect } from 'react-router-dom';
-import moment from 'moment';
 
 import {
     MDBContainer as Container,

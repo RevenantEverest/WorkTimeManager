@@ -4,8 +4,7 @@ import {
     MDBRow as Row,
     MDBCol as Col,
     MDBModal,
-    MDBModalBody,
-    MDBBtn
+    MDBModalBody
 } from 'mdbreact';
 
 import EditBillingPeriodRecordForm from '../forms/EditBillingPeriodRecordForm';

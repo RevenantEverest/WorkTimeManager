@@ -1,11 +1,9 @@
 import moment from 'moment';
 import {
-    MDBContainer as Container, 
     MDBRow as Row,
     MDBCol as Col,
     MDBCard,
-    MDBCardBody,
-    MDBIcon
+    MDBCardBody
 } from 'mdbreact';
 
 function TimesheetTotalTime(props) {
