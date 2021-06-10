@@ -31,7 +31,7 @@ function TimesheetTotalTime(props) {
             </div>
             <div style={{ float: "right" }}>
             <p className="d-inline f-700">Current Amount Due: </p>
-            <p className="d-inline">{totalTimeInHours.toFixed(2) * 20}</p>
+            <p className="d-inline">${(totalTimeInHours * 20).toFixed(2)}</p>
             </div>
             </MDBCardBody>
             </MDBCard>
