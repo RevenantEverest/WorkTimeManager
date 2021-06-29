@@ -22,6 +22,8 @@ import History from '../pages/History';
 import CreateProject from '../pages/CreateProject';
 import ProjectSelect from '../sections/ProjectSelect';
 
+import Footer from '../navigation/Footer';
+
 function SideNav() {
 
     const [toggleStateA, setToggleStateA] = useState(false);
@@ -114,7 +116,7 @@ function SideNav() {
 
             <Route exact path="/projects/create" component={() => (<CreateProject />)} />
         </main>
-        {/* <Footer /> */}
+        <Footer />
         </div>
     );
 };
